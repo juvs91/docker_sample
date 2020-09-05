@@ -1,4 +1,4 @@
-export GIT_HASH=123
+export GIT_HASH=$(git rev-parse --short HEAD)
 
 docker-compose build
 docker-compose up
