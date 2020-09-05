@@ -1,0 +1,18 @@
+version: "3"
+services:
+  python_sample:
+    build:
+      args:
+        TAG: $GIT_HASH
+      context: ./
+      dockerfile: Dockerfile-python
+    ports:
+      - 8080:8080
+    environment:
+      - port=8080
+    image: python_sample:${GIT_HASH}
+    command: ["python3", "/app/app.py"]
+    volumes:
+      - ./data:/data
+    # depends_on:
+    #   - kafka-data-import

@@ -1,0 +1,9 @@
+FROM python:3-alpine
+
+# pip install requirements before copying source to avoid invalidating the cache
+COPY ./requirements.txt /app/
+RUN pip3 install -r /app/requirements.txt --disable-pip-version-check
+
+COPY . /app
+
+WORKDIR /app
